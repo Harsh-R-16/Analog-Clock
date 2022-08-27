@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Clock</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+</head>
+
+<body>
+
+    <p style="text-align: center;font-size: 18px;font-weight: bold"> Date: <span id="date"></span></p>
+    <div id="main">
+        <div id="h"></div>
+        <div id="m"></div>
+        <div id="s"></div>
+        <div class="ci"></div>
+    </div>
+
+
+    <script>
+        var dt = new Date();
+        document.getElementById("date").innerHTML = ((("0" + dt.getDate()).slice(-2)) + "/" + ("0" + (dt.getMonth() + 1)).slice(-2)) + "/" + (dt.getFullYear());
+
+        setInterval(() => {
+            d = new Date();
+            htime = d.getHours();
+            mtime = d.getMinutes();
+            stime = d.getSeconds();
+            hrotation = 30 * htime + mtime / 2;
+            mrotation = 6 * mtime;
+            srotation = 6 * stime;
+
+            h.style.transform = `rotate(${hrotation}deg)`;
+            m.style.transform = `rotate(${mrotation}deg)`;
+            s.style.transform = `rotate(${srotation}deg)`;
+        }, 1000);</script>
+</body>
+
+</html>
